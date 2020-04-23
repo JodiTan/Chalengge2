@@ -28,7 +28,6 @@ class MapsState extends State<MyApp> {
     final data = await rootBundle.loadString("assets/countries.csv");
     //print(data.toString());
     countriesData = CsvToListConverter().convert(data).toList();
-    print (countriesData.toString());
   }
 
   _onMapCreated(GoogleMapController controller) {
@@ -37,6 +36,7 @@ class MapsState extends State<MyApp> {
   }
 
   _onCameraMove(CameraPosition position) {
+    print (countriesData[60][0]);
     _lastPosition = position.target;
   }
 
