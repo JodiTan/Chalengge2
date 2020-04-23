@@ -26,8 +26,9 @@ class MapsState extends State<MyApp> {
 
   void LoadAsset() async{
     final data = await rootBundle.loadString("assets/countries.csv");
-    print(data.toString());
-    //countriesData = CsvToListConverter().convert(data).toList();
+    //print(data.toString());
+    countriesData = CsvToListConverter().convert(data).toList();
+    print (countriesData.toString());
   }
 
   _onMapCreated(GoogleMapController controller) {
