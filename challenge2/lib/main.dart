@@ -24,13 +24,14 @@ class MapsState extends State<MyApp> {
 
   List<List<dynamic>> countriesData = [];
 
-  LoadAsset() async{
+  void LoadAsset() async{
     final data = await rootBundle.loadString("assets/countries.csv");
-    countriesData = CsvToListConverter().convert(data);
+    print(data.toString());
+    //countriesData = CsvToListConverter().convert(data).toList();
   }
 
   _onMapCreated(GoogleMapController controller) {
-    console.log()
+    LoadAsset();
     _controller.complete(controller);
   }
 
