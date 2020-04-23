@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:csv/csv.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 void main() => runApp(MyApp());
 
@@ -20,7 +22,15 @@ class MapsState extends State<MyApp> {
   LatLng _lastPosition = _center;
   MapType _currentMapType = MapType.normal;
 
+  List<List<dynamic>> countriesData = [];
+
+  LoadAsset() async{
+    final data = await rootBundle.loadString("assets/countries.csv");
+    countriesData = CsvToListConverter().convert(data);
+  }
+
   _onMapCreated(GoogleMapController controller) {
+    console.log()
     _controller.complete(controller);
   }
 
